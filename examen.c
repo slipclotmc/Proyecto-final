@@ -1,7 +1,6 @@
 /*Velázquez Domínguez Ricardo
 Fundamentos de programación - Proyecto final*/
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -249,112 +248,6 @@ void mostrarResultados(int puntuaciones[NUM_CANCIONES], int primera, int segunda
     // Mostrar puntos de oyentes
     printf("PUNTOS DE OYENTES:\n");
     for (i = 0; i < numOyentes; i++) {
-        printf("Oyente %d: %d puntos\n", i, puntosOyentes[i]);
-    }
-}
-        }
-    }
-}
-
-// Inciso 3: Calcular puntos de cada oyente
-void calcularPremios(int votos[MAX_OYENTES][3], int oyentes, int primera, int segunda, int puntosOyentes[MAX_OYENTES]) {
-    int i, j;
-    int tienePrimera, tieneSegunda;
-    
-    // Inicializar puntos de oyentes
-    for (i = 0; i < oyentes; i++) {
-        puntosOyentes[i] = 0;
-    }
-    
-    for (i = 0; i < oyentes; i++) {
-        tienePrimera = 0;
-        tieneSegunda = 0;
-        
-        // Verificar si el oyente votó por las canciones ganadoras
-        for (j = 0; j < 3; j++) {
-            if (votos[i][j] == primera) {
-                tienePrimera = 1;
-            }
-            if (votos[i][j] == segunda) {
-                tieneSegunda = 1;
-            }
-        }
-        
-        // Calcular puntos según las reglas
-        if (tienePrimera) {
-            puntosOyentes[i] += 30;
-        }
-        if (tieneSegunda) {
-            puntosOyentes[i] += 20;
-        }
-        if (tienePrimera && tieneSegunda) {
-            puntosOyentes[i] += 10;
-        }
-    }
-}
-
-// Encontrar y mostrar todos los ganadores (maneja empates)
-void encontrarGanadores(int puntosOyentes[], int oyentes) {
-    int maxPuntos = 0;
-    int i;
-    int ganadores[MAX_OYENTES];
-    int numGanadores = 0;
-    
-    // Encontrar puntuación máxima
-    for (i = 0; i < oyentes; i++) {
-        if (puntosOyentes[i] > maxPuntos) {
-            maxPuntos = puntosOyentes[i];
-        }
-    }
-    
-    // Encontrar todos los oyentes con puntuación máxima
-    for (i = 0; i < oyentes; i++) {
-        if (puntosOyentes[i] == maxPuntos) {
-            ganadores[numGanadores] = i;
-            numGanadores++;
-        }
-    }
-    
-    // Mostrar resultados
-    printf("\n-- RESULTADO FINAL --\n");
-    
-    if (numGanadores == 1) {
-        printf("GANADOR ÚNICO\n");
-        printf("Oyente número: %d\n", ganadores[0]);
-        printf("Puntos obtenidos: %d\n", maxPuntos);
-    } else {
-        printf("EMPATE - %d GANADORES\n", numGanadores);
-        for (i = 0; i < numGanadores; i++) {
-            printf("Oyente número: %d\n", ganadores[i]);
-            printf("Puntos obtenidos: %d\n", maxPuntos);
-        }
-        
-        // Sorteo para premio único
-        srand(time(NULL));
-        int premioUnico = ganadores[rand() % numGanadores];
-        printf("\nGANADOR DEL SORTEO PARA PREMIO ÚNICO: Oyente %d\n", premioUnico);
-    }
-}
-
-// Mostrar todos los resultados
-void mostrarResultados(int puntuaciones[NUM_CANCIONES], int primera, int segunda, int puntosOyentes[MAX_OYENTES], int oyentes) {
-    int i;
-    
-    printf("-- RESULTADOS DEL CONCURSO --\n\n");
-    
-    // Mostrar puntuaciones de canciones
-    printf("PUNTUACIONES POR CANCIÓN:\n");
-    for (i = 0; i < NUM_CANCIONES; i++) {
-        printf("Canción %d: %d votos\n", i, puntuaciones[i]);
-    }
-    
-    printf("\nCANCIONES MÁS VOTADAS:\n");
-    printf("1a canción: %d (%d votos)\n", primera, puntuaciones[primera]);
-    printf("2a canción: %d (%d votos)\n\n", segunda, puntuaciones[segunda]);
-    
-    // Mostrar puntos de oyentes
-    printf("PUNTOS DE OYENTES:\n");
-    for (i = 0; i < oyentes; i++) {
         printf("Oyente %d: %d puntos\n", i, puntosOyentes[i]);
     }
 }
