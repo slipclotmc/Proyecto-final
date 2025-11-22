@@ -1,3 +1,7 @@
+/*Velázquez Domínguez Ricardo
+Fundamentos de programación - Proyecto final */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
