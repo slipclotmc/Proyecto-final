@@ -1,5 +1,5 @@
 /*Velázquez Domínguez Ricardo
-Fundamentos de programación - Proyecto final */
+Fundamentos de programación - Proyecto final*/
 
 
 #include <stdio.h>
